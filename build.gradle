@@ -1,0 +1,19 @@
+apply plugin: 'java'
+apply plugin: 'eclipse-wtp'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.google.guava:guava:19.0'
+    
+    compile 'com.sparkjava:spark-core:2.3'
+    
+    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'io.gsonfire:gson-fire:1.5.1'
+    
+    compile 'org.neo4j:neo4j:3.0.0-M04'
+    compile 'org.neo4j:neo4j-ogm-api:2.0.0-M02'
+    compile 'org.neo4j:neo4j-ogm-core:2.0.0-M02'
+}
