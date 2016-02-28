@@ -1,0 +1,11 @@
+<h2>Tunings</h2>
+<table class="table table-striped">
+	<tr>
+		<th>Strings</th>
+		<th>Tuning</th>
+	</tr>
+	<tr ng-repeat="tuning in tunings">
+		<td>{{tuning.stringCount}}</td>
+		<td>{{tuning.strings.join(", ")}}</td>
+	</tr>
+</table>

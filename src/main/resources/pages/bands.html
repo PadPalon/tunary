@@ -1,0 +1,42 @@
+<div class="panel panel-default">
+	<div class="panel-heading"><h2>Bands</h2></div>
+	<div class="panel-body" ng-show="band == null && newBand == false">
+		<table class="table table-striped table-hover" ng-init="loadBands()">
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+			</tr>
+			<tr ng-repeat="band in bands" ng-click="loadBand(band)">
+				<td>{{band.id}}</td>
+				<td>{{band.name}}</td>
+			</tr>
+		</table>
+		<button type="button" class="btn btn-primary" ng-click="createBand()">New</button>
+	</div>
+	<div class="panel-body" ng-show="band != null && newBand == false">
+		<form class="form" role="form">
+			<div class="form-group">
+				<label class="control-label" for="id">Id</label>
+				<p class="form-control-static" id="id">{{band.id}}</p>	
+			</div>
+			<div class="form-group">
+				<label class="control-label" for="bandname">Name</label>
+				<p class="form-control-static" id="bandname">{{band.name}}</p>	
+			</div>
+		</form>
+		<button type="button" class="btn btn-warning" ng-click="bandList()">Back</button>
+	</div>
+	<div class="panel-body" ng-show="newBand == true">
+		<form class="form" role="form">
+			<div class="form-group">
+				<label class="control-label" for="bandname">Name</label>
+				<input type="text" class="form-control" id="bandname" ng-model="band.name"></input>
+			</div>
+			<div class="form-group">
+				<button type="button" class="btn btn-success" ng-click="saveBand()">Save</button>
+				<button type="button" class="btn btn-danger" ng-click="bandList()">Discard</button>
+			</div>
+		</form>
+	</div>
+</div>
+<div ng-include="'albums.html'" ng-show="band != null && newBand == false"></div>

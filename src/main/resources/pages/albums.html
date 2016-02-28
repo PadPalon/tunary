@@ -1,0 +1,52 @@
+<div class="panel panel-default">
+	<div class="panel-heading"><h2>Albums</h2></div>
+	<div class="panel-body" ng-show="album == null && newAlbum == false">
+		<table class="table table-striped table-hover" ng-init="loadAlbums()">
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Band</th>
+			</tr>
+			<tr ng-repeat="album in albums" ng-click="loadAlbum(album)">
+				<td>{{album.id}}</td>
+				<td>{{album.name}}</td>
+				<td>{{album.band.name}}</td>
+			</tr>
+		</table>
+		<button type="button" class="btn btn-primary" ng-click="createAlbum()">New</button>
+	</div>
+	<div class="panel-body" ng-show="album != null && newAlbum == false">
+		<form class="form" role="form">
+			<div class="form-group">
+				<label class="control-label" for="id">Id</label>
+				<p class="form-control-static" id="id">{{album.id}}</p>	
+			</div>
+			<div class="form-group">
+				<label class="control-label" for="albumname">Name</label>
+				<p class="form-control-static" id="albumname">{{album.name}}</p>	
+			</div>
+			<div class="form-group">
+				<label class="control-label" for="bandname">Band</label>
+				<p class="form-control-static" id="bandname">{{album.band.name}}</p>	
+			</div>
+		</form>
+		<button type="button" class="btn btn-warning" ng-click="albumList()">Back</button>
+	</div>
+	<div class="panel-body" ng-show="newAlbum == true">
+		<form class="form" role="form">
+			<div class="form-group">
+				<label class="control-label" for="albumname">Name</label>
+				<input type="text" class="form-control" id="albumname" ng-model="album.name"></input>
+			</div>
+			<div class="form-group">
+				<label class="control-label" for="bandname">Band</label>
+				<select class="form-control" ng-options="band.id as band.name for band in bands" ng-model="album.band.id"></select>
+			</div>
+			<div class="form-group">
+				<button type="button" class="btn btn-success" ng-click="saveAlbum()">Save</button>
+				<button type="button" class="btn btn-danger" ng-click="albumList()">Discard</button>
+			</div>
+		</form>
+	</div>
+</div>
+<div ng-include="'songs.html'" ng-show="album != null && newAlbum == false"></div>
